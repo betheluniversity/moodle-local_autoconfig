@@ -26,7 +26,7 @@ namespace local_autoconfig\config;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/local/wiscservices/lib.php');
+require_once($CFG->dirroot.'/local/wiscservices/locallib.php');
 
 /**
  * \local_autoconfig\siteadmins class
