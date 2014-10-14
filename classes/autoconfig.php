@@ -61,6 +61,7 @@ class autoconfig {
                 'portfolios',
                 'ltitools',
                 'siteadmins',
+                'geoip',
         );
     }
 
