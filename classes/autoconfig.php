@@ -94,7 +94,7 @@ class autoconfig {
         // Lots of changes need this cache flushed
         \core_plugin_manager::reset_caches();
 
-        cli_heading('Auto configuration end');
+        $progress->output('===Auto configuration end===');
     }
 
     /**
