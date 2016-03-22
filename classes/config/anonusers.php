@@ -26,8 +26,6 @@ namespace local_autoconfig\config;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/local/uwmoodle/util/uwmoodle_util_helper.php');
-
 /**
  * \local_autoconfig\anonusers class
  *
@@ -60,8 +58,43 @@ class anonusers extends base {
         $numanon = $this->count_anonusers();
         if ($config->anonusers > $numanon) {
             $this->output("Creating $config->anonusers anon users");
-            \uwmoodle_util_helper::create_anon_users($config->anonusers);
+            $this->create_anon_users($config->anonusers);
             $this->output('done');
         }
     }
+
+    public function create_anon_users($count) {
+        global $DB, $CFG;
+
+        // TODO: We should create user contexts, and maybe call event handlers, etc.  Otherwise we rely on cron to fix up the accounts.
+
+        for ($i = 1; $i <= $count; ++$i) {
+            $username = "anon$i";
+            if (!$DB->record_exists('user', array('username'=>$username))) {
+                //create anon user
+                $user = new \stdClass;
+                $user->username = $username;
+
+                $user->firstname = "anonfirstname$i";
+                $user->lastname = "anonlastname$i";
+                $user->city = 'Perth';
+                $user->country = 'AU';
+                $user->lastip = '127.0.0.1';
+                $user->password = 'restored';
+                $user->email = "anon$i@doesntexist.com";
+                $user->emailstop = 1;
+                $user->confirmed  = 1;
+                $user->timecreated   = time();
+                $user->timemodified  = 0;
+                $user->mnethostid = $CFG->mnet_localhost_id;
+                $user->lang = $CFG->lang;
+
+                $user->id = $DB->insert_record('user', $user);
+                echo '+';
+            } else {
+                echo '.';
+            }
+        }
+    }
+
 }
