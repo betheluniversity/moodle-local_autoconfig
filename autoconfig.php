@@ -30,8 +30,12 @@ require_once($CFG->libdir.'/clilib.php');
 
 // Check access permissions.
 $systemcontext = context_system::instance();
+
 require_login();
 require_capability('moodle/site:config', $systemcontext);
+
+$PAGE->set_url('/local/autoconfig/autoconfig.php');
+$PAGE->set_context($systemcontext);
 
 // send mime type and encoding
 @header('Content-Type: text/plain; charset=utf-8');
