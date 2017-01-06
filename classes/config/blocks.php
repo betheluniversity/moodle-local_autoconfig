@@ -77,6 +77,8 @@ class blocks extends base {
         global $SITE, $CFG, $DB;
         $config = $this->get_config();
 
+        $config->defaultblocks_site;
+
         // Site home blocks
         $rebuildsiteblocks = !empty($config->defaultblocks_site)
                       && $config->defaultblocks_site != get_config('local_autoconfig', 'defaultblocks_site_saved');

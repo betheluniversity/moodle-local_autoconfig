@@ -26,6 +26,7 @@ namespace local_autoconfig\config;
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot.'/local/wiscservices/locallib.php');
 
 /**
  * \local_autoconfig\siteadmins class
@@ -48,11 +49,39 @@ class siteadmins extends base {
     protected function find_or_add_user($username) {
         global $DB;
 
+        static $wiscservices = null;
+        static $peoplepicker = null;
+
+
         if ($userid = $DB->get_field('user', 'id', array('username'=>$username, 'deleted'=>0))) {
             return $userid;  // found user, so done
         }
 
-        // not found, so you could try adding an external user here...
+        if (!$wiscservices) {
+            $wiscservices = new \local_wiscservices_plugin();
+        }
+        if (!$peoplepicker) {
+            $peoplepicker = new \wisc_peoplepicker();
+        }
+
+        // not found, so try adding by netid
+        $netid = null;
+        if (preg_match('/^([^@]+)@wisc.edu$/', $username, $matches)) {
+            $netid = $matches[1];
+        }
+
+        if (!$netid) {
+            return false;
+        }
+
+        // query peoplepicker
+        $person = $peoplepicker->getPeopleByNetid(array($netid));
+        $person = reset($person);
+
+        if ($person) {
+            // found someone, so add to moodle
+            return $wiscservices->verify_person($person, true);
+        }
         return false;
     }
 

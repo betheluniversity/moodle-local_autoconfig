@@ -47,5 +47,15 @@ class serverdirectories extends base {
             $this->output("Creating quarantine directory");
             mkdir($CFG->quarantinedir, $CFG->directorypermissions);
         }
+
+        // Create a symlink for mod_certificate, if the global_config destination exists.
+        // This is how we keep certificate resources synchronized between sites.
+        $globalcertdir = '/home/moodle-data/global_config/mod_certificate';
+        $certdir = $CFG->dataroot . '/mod/certificate';
+        if (file_exists($globalcertdir) && !file_exists($certdir)) {
+            $this->output("Linking certificate upload directory to $globalcertdir");
+            make_upload_directory('mod');
+            symlink($globalcertdir, $certdir);
+        }
     }
 }

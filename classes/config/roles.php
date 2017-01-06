@@ -43,6 +43,15 @@ defined('MOODLE_INTERNAL') || die();
  * $CFG->local_autoconfig->report_usage_roles_byshortname
  * $CFG->local_autoconfig->coursecontact_byshortname
  * $CFG->local_autoconfig->block_quickmail_roleselection_byshortname
+ * $CFG->local_autoconfig->block_uwcourseinfo_roles_byshortname
+ * $CFG->local_autoconfig->enrol_wisc_studentrole_byshortname
+ * $CFG->local_autoconfig->enrol_wisc_ferparole_byshortname
+ * $CFG->local_autoconfig->enrol_wisc_teacherrole_byshortname
+ * $CFG->local_autoconfig->enrol_wisc_tarole_byshortname
+ * $CFG->local_autoconfig->enrol_wisc_otherrole_byshortname
+ * $CFG->local_autoconfig->enrol_lifelonglearning_studentrole_byshortname
+ * $CFG->local_autoconfig->enrol_lifelonglearning_ferpastudentrole_byshortname
+ * $CFG->local_autoconfig->enrol_lifelonglearning_teacherrole_byshortname
  *
  * @package    local
  * @subpackage autoconfig
@@ -295,6 +304,15 @@ class roles extends base {
                           'coursecontact',
                           'block_quickmail_roleselection',
                           'report_usage|roles',
+                          'block_uwcourseinfo|roles',
+                          'enrol_wisc|studentrole',
+                          'enrol_wisc|ferparole',
+                          'enrol_wisc|teacherrole',
+                          'enrol_wisc|tarole',
+                          'enrol_wisc|otherrole',
+                          'enrol_lifelonglearning|studentrole',
+                          'enrol_lifelonglearning|ferpastudentrole',
+                          'enrol_lifelonglearning|teacherrole',
         );
 
         foreach ($settings as $setting) {

@@ -13,11 +13,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Web auto configuration script.
+ * Web auto configuration script
  *
  * @package    local
  * @subpackage autoconfig
- * @copyright  2016 University of Wisconsin
+ * @copyright  2014 University of Wisconsin
  * @author     Matt petro
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,12 +30,8 @@ require_once($CFG->libdir.'/clilib.php');
 
 // Check access permissions.
 $systemcontext = context_system::instance();
-
 require_login();
 require_capability('moodle/site:config', $systemcontext);
-
-$PAGE->set_url('/local/autoconfig/autoconfig.php');
-$PAGE->set_context($systemcontext);
 
 // send mime type and encoding
 @header('Content-Type: text/plain; charset=utf-8');
