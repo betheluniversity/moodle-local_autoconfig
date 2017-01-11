@@ -48,6 +48,7 @@ defined('MOODLE_INTERNAL') || die();
  * $CFG->local_autoconfig->enrol_wisc_ferparole_byshortname
  * $CFG->local_autoconfig->enrol_wisc_teacherrole_byshortname
  * $CFG->local_autoconfig->enrol_wisc_tarole_byshortname
+ * $CFG->local_autoconfig->enrol_wisc_auditorrole_byshortname
  * $CFG->local_autoconfig->enrol_wisc_otherrole_byshortname
  * $CFG->local_autoconfig->enrol_lifelonglearning_studentrole_byshortname
  * $CFG->local_autoconfig->enrol_lifelonglearning_ferpastudentrole_byshortname
@@ -309,6 +310,7 @@ class roles extends base {
                           'enrol_wisc|ferparole',
                           'enrol_wisc|teacherrole',
                           'enrol_wisc|tarole',
+                          'enrol_wisc|auditorrole',
                           'enrol_wisc|otherrole',
                           'enrol_lifelonglearning|studentrole',
                           'enrol_lifelonglearning|ferpastudentrole',
