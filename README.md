@@ -1,6 +1,6 @@
 # Moodle Plugin: local_autoconfig
 
-[Matt Petro](matt.petro@wisc.edu) (University of Wisconsin - Madison) created this plugin for Moodle 2.8 to help automate
+[Matt Petro](mailto:matt.petro@wisc.edu) (University of Wisconsin - Madison) created this plugin for Moodle 2.8 to help automate
 creating and deploying Moodle instances en masse. The gist of it is this:
 
 1. After deploying a "stock" version of Moodle, install this plugin
