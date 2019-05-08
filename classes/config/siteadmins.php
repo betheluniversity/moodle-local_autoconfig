@@ -26,7 +26,7 @@ namespace local_autoconfig\config;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot.'/local/wiscservices/locallib.php');
+//require_once($CFG->dirroot.'/local/wiscservices/locallib.php');
 
 /**
  * \local_autoconfig\siteadmins class
@@ -49,14 +49,15 @@ class siteadmins extends base {
     protected function find_or_add_user($username) {
         global $DB;
 
-        static $wiscservices = null;
-        static $peoplepicker = null;
+        //static $wiscservices = null;
+        //static $peoplepicker = null;
 
 
         if ($userid = $DB->get_field('user', 'id', array('username'=>$username, 'deleted'=>0))) {
             return $userid;  // found user, so done
         }
 
+        /*
         if (!$wiscservices) {
             $wiscservices = new \local_wiscservices_plugin();
         }
@@ -82,6 +83,7 @@ class siteadmins extends base {
             // found someone, so add to moodle
             return $wiscservices->verify_person($person, true);
         }
+        */
         return false;
     }
 
