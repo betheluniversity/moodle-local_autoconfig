@@ -26,7 +26,7 @@ if (!defined('MOODLE_INTERNAL')) {
     die('Direct access to this script is forbidden.');    ///  It must be included from a Moodle page
 }
 
-$plugin->version = 2014101400;
+$plugin->version = 2019050800;
 $plugin->component = 'local_autoconfig';
-$plugin->requires = 2013111800;
+$plugin->requires = 2018120300;  // Moodle 3.6.0
 $plugin->maturity = MATURITY_BETA;
